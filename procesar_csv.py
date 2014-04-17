@@ -16,7 +16,7 @@ class ProcesarCsv(object):
 		return datos
 
 	def escribir_datos_product(self):
-
+		count = 4
 		aban = self.datos_csv(self.datos_csv_aban, 'r')
 		product = self.datos_csv(self.datos_prodct_product, 'r')
 		with open('db_files/product_product1.csv', 'wb') as nuevo:
@@ -27,7 +27,9 @@ class ProcesarCsv(object):
 		 		for valor_master in  aban:
 		 			valores = valor_master.values()
 		 			valores_plantilla[7] = valores[2]
+		 			valores_plantilla[9] = count
 		 			nuevo_product.writerow(valores_plantilla)
+		 			count += 1
 		 		break
 	def escribir_datos_template():
 		pass
