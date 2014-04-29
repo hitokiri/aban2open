@@ -21,9 +21,8 @@ class ProcesarCsv(object):
 		aban = self.datos_csv(self.datos_csv_aban, 'r')
 		product = self.datos_csv(self.datos_prodct_product, 'r')
 		nombre_orden = product.fieldnames
-		orden_aban = aban.fieldnames
 		with open('db_files/product_product1.csv', 'wb') as nuevo:
-		 	for master, plantilla in zip(aban, product):
+		 	for plantilla in product:
 		 		nuevo_product = csv.DictWriter(nuevo,quotechar='"', quoting=csv.QUOTE_ALL, fieldnames = nombre_orden)
 		 		nuevo_product.writerow(dict((fn,fn) for fn in nombre_orden))
 		 		valores_plantilla = plantilla
@@ -41,9 +40,8 @@ class ProcesarCsv(object):
 		product = self.datos_csv(self.datos_product_template, 'r')
 		product_category = self.datos_csv(self.datos_product_category, 'r')
 		nombre_orden = product.fieldnames
-		orden_aban = aban.fieldnames
 		with open('db_files/product_template1.csv', 'wb') as nuevo:
-		 	for master, plantilla in zip(aban, product):
+		 	for plantilla in product:
 		 		nuevo_product = csv.DictWriter(nuevo,quotechar='"', quoting=csv.QUOTE_ALL, fieldnames = nombre_orden)
 		 		nuevo_product.writerow(dict((_, _) for _ in nombre_orden))
 		 		valores_plantilla = plantilla
@@ -51,6 +49,7 @@ class ProcesarCsv(object):
 		 			valores_plantilla.update({'id':'%s' % count})
 		 			valores_plantilla.update({'list_price':'%s' % valor_master['pvp']})
 		 			valores_plantilla.update({'name':'%s' % valor_master['referencia']})
+		 			valores_plantilla.update({'description':'%s' % valor_master['descripcion']})
 		 			for category in product_category:
 		 				if valor_master['codfamilia'] == category['name']:
 		 					valores_plantilla.update({'categ_id':'%s' % category['id']})
