@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import csv
-
+from settings import *
 
 class ProcesarCsv(object):
 	"""docstring for ProcesarCsv"""
 	def __init__(self):
-		self.datos_csv_aban = 'db_files/db-colum.csv'
-		self.datos_prodct_product = 'db_files/product_product.csv'
-		self.datos_product_template = 'db_files/product_template.csv'
-		self.datos_product_category = 'db_files/product_category1.csv'
+		self.datos_csv_aban = 'db_files/db-colum.csv'#archivo productos de abanq
+		self.datos_prodct_product = 'db_files/product_product.csv'#archivo base de openerp
+		self.datos_product_template = 'db_files/product_template.csv'#archivo base de openerp
+		self.datos_product_category = 'db_files/product_category1.csv'#archivo base de openerp
 
 	def datos_csv(self, nombre, modo):
 		datos_csv=open(nombre, modo)
