@@ -40,6 +40,7 @@ class ProcesarCsv(object):
 		product = self.datos_csv(self.datos_product_template, 'r')
 		product_category = self.datos_csv(self.datos_product_category, 'r')
 		nombre_orden = product.fieldnames
+		temporal_category = dict((_['name'], _['id']) for _ in product_category)
 		with open('db_files/product_template1.csv', 'wb') as nuevo:
 		 	for plantilla in product:
 		 		nuevo_product = csv.DictWriter(nuevo,quotechar='"', quoting=csv.QUOTE_ALL, fieldnames = nombre_orden)
@@ -50,13 +51,12 @@ class ProcesarCsv(object):
 		 			valores_plantilla.update({'list_price':'%s' % valor_master['pvp']})
 		 			valores_plantilla.update({'name':'%s' % valor_master['referencia']})
 		 			valores_plantilla.update({'description':'%s' % valor_master['descripcion']})
-		 			for category in product_category:
-		 				if valor_master['codfamilia'] == category['name']:
-		 					valores_plantilla.update({'categ_id':'%s' % category['id']})
+	 				if valor_master['codfamilia'] in  temporal_category:
+	 					valores_plantilla.update({'categ_id':'%s' % temporal_category[valor_master['codfamilia']]})
 		 			nuevo_product.writerow(valores_plantilla)
-		 			product_category = self.datos_csv(self.datos_product_category, 'r')
 		 			count += 1
 		 		break
+
 
 	def escribir_datos_category(self):
 		count = 3
