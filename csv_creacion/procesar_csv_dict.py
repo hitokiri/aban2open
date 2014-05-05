@@ -27,7 +27,7 @@ class ProcesarCsv(object):
 		with open(CARPETA_FILE + 'product_product1.csv', 'wb') as nuevo:
 		 	for plantilla in product:
 		 		#nuevo_product = csv.DictWriter(nuevo,quotechar='"', quoting=csv.QUOTE_ALL, fieldnames = nombre_orden)
-		 		nuevo_product = csv.DictWriter(nuevo,quoting=csv.QUOTE_MINIMAL, fieldnames = nombre_orden)
+		 		nuevo_product = csv.DictWriter(nuevo, fieldnames = nombre_orden)
 		 		nuevo_product.writerow(dict((fn,fn) for fn in nombre_orden))
 		 		valores_plantilla = plantilla
 		 		for valor_master in  aban:
@@ -47,7 +47,7 @@ class ProcesarCsv(object):
 		temporal_category = dict((_['name'], _['id']) for _ in product_category)
 		with open(CARPETA_FILE + 'product_template1.csv', 'wb') as nuevo:
 		 	for plantilla in product:
-		 		nuevo_product = csv.DictWriter(nuevo,quoting=csv.QUOTE_MINIMAL, fieldnames = nombre_orden)
+		 		nuevo_product = csv.DictWriter(nuevo, fieldnames = nombre_orden)
 		 		nuevo_product.writerow(dict((_, _) for _ in nombre_orden))
 		 		valores_plantilla = plantilla
 		 		for valor_master in  aban:
@@ -71,7 +71,7 @@ class ProcesarCsv(object):
 		familias_category = set(familias)
 		with open(CARPETA_FILE + 'product_category1.csv', 'wb') as nuevo:
 		 	for plantilla in product:
-		 		nuevo_product = csv.DictWriter(nuevo,quoting=csv.QUOTE_MINIMAL, fieldnames = nombre_orden)
+		 		nuevo_product = csv.DictWriter(nuevo, fieldnames = nombre_orden)
 		 		nuevo_product.writerow(dict((_, _) for _ in nombre_orden))
 		 		valores_plantilla = plantilla
 		 		for valor_master in  familias_category:
