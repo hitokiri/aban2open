@@ -1,5 +1,13 @@
 # -*- coding: utf-8 -*-
-ABANQ = 'db_files/db-colum.csv'#archivo productos de abanq
-PRODUCT_PRODUCT = 'db_files/product_product.csv'#archivo base de openerp
-PRODUCT_TEMPLATE = 'db_files/product_template.csv'#archivo base de openerp
-PRODUCT_CATEGORY = 'db_files/product_category1.csv'#archivo base de openerp
+import os
+
+
+#carpeta donde se guardan los archivos master y salidas de creacion
+CARPETA_FILE = os.path.join(os.path.dirname(__file__), 'db_files/')#archivo productos de abanq
+
+#configuracion de los archivos para leer y crear con el proceso csv_dict
+ABANQ = CARPETA_FILE + 'db-colum.csv'#archivo base de openerp
+PRODUCT_PRODUCT = CARPETA_FILE + 'product_product.csv'#archivo base de openerp
+PRODUCT_TEMPLATE = CARPETA_FILE + 'product_template.csv'#archivo base de openerp
+PRODUCT_CATEGORY = CARPETA_FILE + 'product_category.csv'#archivo base de openerp
+PRODUCT_CATEGORY1 = CARPETA_FILE + 'product_category1.csv'#archivo base de openerp
