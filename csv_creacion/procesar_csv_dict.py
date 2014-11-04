@@ -15,7 +15,7 @@ class ProcesarCsv(object):
 
 	def datos_csv(self, nombre, modo):
 		datos_csv=open(nombre, modo)
-		datos = csv.DictReader(datos_csv)
+		datos = csv.DictReader(datos_csv, delimiter=',', quotechar='"', escapechar='\\')
 
 		return datos
 

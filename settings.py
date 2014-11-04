@@ -11,3 +11,27 @@ PRODUCT_PRODUCT = CARPETA_FILE + 'product_product.csv'#archivo base de openerp
 PRODUCT_TEMPLATE = CARPETA_FILE + 'product_template.csv'#archivo base de openerp
 PRODUCT_CATEGORY = CARPETA_FILE + 'product_category.csv'#archivo base de openerp
 PRODUCT_CATEGORY1 = CARPETA_FILE + 'product_category1.csv'#archivo base de openerp
+
+INPORTFILES_ABANQ = ['articulos',]
+INPORTFILES_OPENERP = ['product_category', 'product_template', 'product_product',]
+
+DATABASES = {
+	'abanq': {
+	'ENGINE':'', #mysql or postgresql_psycopg2
+        'NAME': '',#name for Database
+        'USER': '', #user form Database
+        'PASSWORD': '', #password fron database
+        'HOST': '', #host from you server
+        'PORT': '',#postgres 5432 mysql 3306
+        'TABLAS': INPORTFILES_ABANQ,
+	},
+	'postgres': {
+		'ENGINE':'', #mysql or postgresql_psycopg2
+        'NAME': '',#name for Database
+        'USER': '', #user form Database
+        'PASSWORD': '', #password fron database
+        'HOST': '', #host from you server
+        'PORT': '',#postgres 5432 mysql 3306
+        'TABLAS': INPORTFILES_OPENERP,
+	},
+}
